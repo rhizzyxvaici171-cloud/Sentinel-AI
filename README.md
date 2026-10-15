@@ -115,12 +115,3 @@ sentinelai/
     └── auth.log           # realistic demo log with planted anomalies
 ```
 
-## Extending it (good talking points if asked "what would you add next?")
-
-- Swap in-memory state for a real datastore (Postgres) to support multiple
-  concurrent logs / users
-- Stream the model's analysis token-by-token instead of waiting for the full
-  JSON response
-- Add a vector store for true RAG over very large logs instead of the
-  keyword-filter approach used here
-- Wire the n8n alert branch into Slack/PagerDuty for real incident response
