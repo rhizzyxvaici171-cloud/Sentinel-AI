@@ -1,0 +1,30 @@
+Sep 24 02:14:01 prod-web-01 sshd[1201]: Accepted password for deploy from 41.223.84.12 port 51122 ssh2
+Sep 24 02:16:33 prod-web-01 sshd[1204]: Failed password for invalid user admin from 185.234.219.12 port 44210 ssh2
+Sep 24 02:16:34 prod-web-01 sshd[1204]: Failed password for invalid user admin from 185.234.219.12 port 44211 ssh2
+Sep 24 02:16:36 prod-web-01 sshd[1204]: Failed password for invalid user root from 185.234.219.12 port 44212 ssh2
+Sep 24 02:16:38 prod-web-01 sshd[1204]: Failed password for invalid user root from 185.234.219.12 port 44213 ssh2
+Sep 24 02:16:41 prod-web-01 sshd[1204]: Failed password for invalid user test from 185.234.219.12 port 44214 ssh2
+Sep 24 02:16:44 prod-web-01 sshd[1204]: Failed password for invalid user ubuntu from 185.234.219.12 port 44215 ssh2
+Sep 24 02:16:47 prod-web-01 sshd[1204]: Failed password for invalid user oracle from 185.234.219.12 port 44216 ssh2
+Sep 24 02:16:50 prod-web-01 sshd[1204]: Invalid user oracle from 185.234.219.12
+Sep 24 02:16:53 prod-web-01 sshd[1204]: Failed password for invalid user postgres from 185.234.219.12 port 44217 ssh2
+Sep 24 02:16:56 prod-web-01 sshd[1204]: Failed password for invalid user git from 185.234.219.12 port 44218 ssh2
+Sep 24 03:02:11 prod-web-01 sshd[1310]: Accepted password for deploy from 41.223.84.12 port 52011 ssh2
+Sep 24 04:45:02 prod-web-01 sshd[1402]: Failed password for root from 91.198.174.201 port 33112 ssh2
+Sep 24 04:45:05 prod-web-01 sshd[1402]: Failed password for root from 91.198.174.201 port 33113 ssh2
+Sep 24 04:45:08 prod-web-01 sshd[1402]: Failed password for root from 91.198.174.201 port 33114 ssh2
+Sep 24 04:45:11 prod-web-01 sshd[1402]: Failed password for root from 91.198.174.201 port 33115 ssh2
+Sep 24 04:45:14 prod-web-01 sshd[1402]: Failed password for root from 91.198.174.201 port 33116 ssh2
+Sep 24 04:45:17 prod-web-01 sshd[1402]: Failed password for root from 91.198.174.201 port 33117 ssh2
+Sep 24 06:30:00 prod-web-01 sshd[1500]: Accepted password for deploy from 41.223.84.12 port 52890 ssh2
+Sep 24 08:12:45 prod-web-01 sshd[1601]: Accepted password for ifeanyi from 105.112.45.9 port 60211 ssh2
+Sep 24 09:55:19 prod-web-01 sshd[1702]: Failed password for invalid user admin from 45.155.205.77 port 41022 ssh2
+Sep 24 09:55:22 prod-web-01 sshd[1702]: Failed password for invalid user admin from 45.155.205.77 port 41023 ssh2
+Sep 24 09:55:25 prod-web-01 sshd[1702]: Failed password for invalid user support from 45.155.205.77 port 41024 ssh2
+Sep 24 11:20:00 prod-web-01 sshd[1800]: Accepted password for deploy from 41.223.84.12 port 53201 ssh2
+Sep 24 13:40:12 prod-web-01 sshd[1905]: Failed password for jenkins from 185.234.219.12 port 44890 ssh2
+Sep 24 13:40:15 prod-web-01 sshd[1905]: Failed password for jenkins from 185.234.219.12 port 44891 ssh2
+Sep 24 13:40:18 prod-web-01 sshd[1905]: Failed password for jenkins from 185.234.219.12 port 44892 ssh2
+Sep 24 13:40:21 prod-web-01 sshd[1905]: Failed password for jenkins from 185.234.219.12 port 44893 ssh2
+Sep 24 13:40:24 prod-web-01 sshd[1905]: Failed password for jenkins from 185.234.219.12 port 44894 ssh2
+Sep 24 15:05:00 prod-web-01 sshd[2001]: Accepted password for ifeanyi from 105.112.45.9 port 61102 ssh2

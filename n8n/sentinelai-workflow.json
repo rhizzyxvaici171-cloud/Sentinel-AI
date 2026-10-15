@@ -1,0 +1,196 @@
+{
+  "name": "SentinelAI - Auto Log Analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "sentinel-upload",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "New Log File Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/api/upload",
+        "method": "POST",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "file"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "upload-node",
+      "name": "Send to SentinelAI Backend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/api/analyze",
+        "method": "POST",
+        "options": {}
+      },
+      "id": "analyze-node",
+      "name": "Run AI Anomaly Scan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ .anomalies.filter(a => a.severity === \"critical\" || a.severity === \"high\").length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-node",
+      "name": "Critical or High Findings?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{  }}"
+      },
+      "id": "respond-node",
+      "name": "Respond With Findings",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        1120,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {},
+        "fields": {
+          "values": [
+            {
+              "name": "alert_message",
+              "stringValue": "=SentinelAI flagged {{ .anomalies.length }} anomalies in the latest log upload. Highest severity: {{ .anomalies[0].severity }} - {{ .anomalies[0].title }}"
+            }
+          ]
+        }
+      },
+      "id": "set-alert-node",
+      "name": "Build Alert Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        400
+      ]
+    }
+  ],
+  "connections": {
+    "New Log File Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send to SentinelAI Backend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to SentinelAI Backend": {
+      "main": [
+        [
+          {
+            "node": "Run AI Anomaly Scan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run AI Anomaly Scan": {
+      "main": [
+        [
+          {
+            "node": "Critical or High Findings?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Critical or High Findings?": {
+      "main": [
+        [
+          {
+            "node": "Build Alert Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond With Findings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Alert Message": {
+      "main": [
+        [
+          {
+            "node": "Respond With Findings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
